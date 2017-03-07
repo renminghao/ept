@@ -1,17 +1,23 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
+exports.Parse = undefined;
 
-var _index = require('./parse/index');
+var _lodash = require('lodash');
 
-Object.keys(_index).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _index[key];
-    }
-  });
-});
+var _lodash2 = _interopRequireDefault(_lodash);
+
+var _formatInstruction = require('./mod/formatInstruction');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Parse = exports.Parse = function Parse(string, data) {
+
+	string = string.toString();
+
+	console.log((0, _formatInstruction.formatInstruction)(string));
+
+	return string;
+};

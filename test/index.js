@@ -29,7 +29,6 @@ const get = async function (){
 			confirm : 'test'
 		}
 	});
-	console.log(result.toString())
 }
 
 get().then().catch(e=>console.log(e));

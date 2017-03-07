@@ -46,9 +46,7 @@ var get = function () {
 							}
 						});
 
-						console.log(result.toString());
-
-					case 5:
+					case 4:
 					case 'end':
 						return _context.stop();
 				}
