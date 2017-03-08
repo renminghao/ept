@@ -25,7 +25,6 @@ var getInstruction = exports.getInstruction = function getInstruction(string) {
 
 var compile = exports.compile = function compile(string) {
 	string = string.replace(/(\{\{\%?)/, '').replace(/\%?\}\}/, '');
-
 	return (/[\(\{\}\)]/.test(string) ? string : 'STRING += ' + string
 	);
 };
@@ -39,7 +38,5 @@ var formatInstruction = exports.formatInstruction = function formatInstruction(a
 	});
 	array = array.join('\n');
 	array = 'try{\n' + '		var STRING = "";\n' + ' 	this.$DATA = ' + JSON.stringify(data) + '\n' + ' 	with(this.$DATA){\n' + array + '\n' + '		}\n' + '		return STRING;\n' + '	}catch(e){\n' + '		console.log(e)\n' + '	}\n';
-	console.log(array);
-	var a = new Function(array);
-	console.log(a());
+	return new Function(array)();
 };

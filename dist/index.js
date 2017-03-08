@@ -13,12 +13,12 @@ var _formatInstruction = require('./mod/formatInstruction');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Parse = exports.Parse = function Parse(string, data) {
+var Parse = exports.Parse = function Parse(string, data, callback) {
 
 	string = string.toString();
 
 	var instruction = (0, _formatInstruction.getInstruction)(string);
-	var compile = (0, _formatInstruction.formatInstruction)(instruction, data);
+	var compiled = (0, _formatInstruction.formatInstruction)(instruction, data);
 
-	return string;
+	callback && callback(compiled);
 };
