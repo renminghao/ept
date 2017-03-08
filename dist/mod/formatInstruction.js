@@ -3,56 +3,43 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-var REG = /\{\{( +)?\%( +)?.*?( +)?\%( +)?\}\}/img;
+var REG = /\{\{\%?[\s\S]*?\%?\}\}/;
 var instruction = [];
 var countLenght = 0;
 
-var formatInstruction = exports.formatInstruction = function formatInstruction(string) {
-	//去除空格和tab符
-	string = string.replace(/[\t\n]/img, '');
-	//提取指令使用
-	var operaString = string;
-	var index = 0;
-	//源代码中收集指令
-	while (REG.test(operaString)) {
+var getInstruction = exports.getInstruction = function getInstruction(string) {
+	string = string.replace(/[\r\n]/img, '');
+	//将代码中指令和内容收集
+	while (REG.test(string)) {
 		var l = RegExp.leftContext,
 		    c = RegExp.lastMatch,
 		    r = RegExp.rightContext;
-
-		var flag = c.match(/\/\w+/) ? 'end' : 'start';
-		var key = c.match(/\/?\w+/)[0];
-
-		instruction.push({
-			instruction: c,
-			start: l.length,
-			end: l.length + c.length,
-			flag: flag,
-			key: key
-		});
+		//l为非指令内容,c为指令内容
+		instruction.push(l, c);
+		string = r;
 	}
-	//销毁数据重新使用
-	console.log(JSON.stringify(instruction, null, 2));
-	//将指令和指令中的内容进行组合
-	var instructionArray = [];
-	var flagInstruction = '';
-	instruction.map(function (item, index) {
-		//记录指令开始地方
-		if (item.flag == 'start' && !countLenght) {
-			countLenght = item.start;
-			flagInstruction = item.key;
-		}
-		//在指令结束地方收集指令体，并销毁计数器
-		if (item.flag == 'end' && item.key == '/' + flagInstruction) {
-			instructionArray.push({
-				string: operaString.substring(countLenght, item.end),
-				start: countLenght,
-				end: item.end
-			});
-			countLenght = 0;
-		}
-	});
+	//将尾部内容收集
+	instruction.push(string);
+	return instruction;
+};
 
-	console.log(JSON.stringify(instructionArray, null, 2));
-	// return string;
-	return null;
+var compile = exports.compile = function compile(string) {
+	string = string.replace(/(\{\{\%?)/, '').replace(/\%?\}\}/, '');
+
+	return (/[\(\{\}\)]/.test(string) ? string : 'STRING += ' + string
+	);
+};
+
+var formatInstruction = exports.formatInstruction = function formatInstruction(array, data) {
+	if (!array.length) return '';
+	array = array.map(function (item) {
+		var isInstruction = REG.test(item);
+		if (!isInstruction) return 'STRING += \'' + item + '\'';
+		return compile(item);
+	});
+	array = array.join('\n');
+	array = 'try{\n' + '		var STRING = "";\n' + ' 	this.$DATA = ' + JSON.stringify(data) + '\n' + ' 	with(this.$DATA){\n' + array + '\n' + '		}\n' + '		return STRING;\n' + '	}catch(e){\n' + '		console.log(e)\n' + '	}\n';
+	console.log(array);
+	var a = new Function(array);
+	console.log(a());
 };

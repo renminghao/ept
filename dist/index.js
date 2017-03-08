@@ -17,7 +17,8 @@ var Parse = exports.Parse = function Parse(string, data) {
 
 	string = string.toString();
 
-	console.log((0, _formatInstruction.formatInstruction)(string));
+	var instruction = (0, _formatInstruction.getInstruction)(string);
+	var compile = (0, _formatInstruction.formatInstruction)(instruction, data);
 
 	return string;
 };

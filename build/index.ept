@@ -4,38 +4,39 @@
 		<title>Test Demo</title>
 	</head>
 	<body>
-		{{% if(data.test1) %}}
+		{{% if(test1){ %}}
 			this is test
-		{{% /if %}}
+		{{% } %}}
 
-		{{% if(data.test2) %}}
+		{{% if(test2){ %}}
 			this is test1
-		{{% else %}}
+		{{% }else{ %}}
 			this is test2
-		{{% /if %}}
+		{{% } %}}
 
-		{{% if(data.test3) %}}
+		{{% if(test3){ %}}
 			this is test3
-		{{% elseif(data.test4) %}}
+		{{% }else if(test4){ %}}
 			this is test 4
-		{{% else %}}
+		{{% }else{ %}}
 			this is test5
-		{{% /if %}}
+		{{% } %}}
 
-		{{% if(data.test1) %}}
+		{{% if(test1){ %}}
 			this is test form same commonent
-		{{% /if %}}
+		{{% } %}}
 
 		<ul>
-			{{% each (item in items) %}}
-				{{% if($index == 1) %}}
-					<span class="{{% if(a) %}}test{{% /if %}}">test</span>
-				{{% /if %}}
+			{{% for(var i = 0; i < items.length; i++){ %}}
+				{{% if(i == 1){ %}}
+					<span class="{{% if(items[i]){ %}}test{{% } %}}">test</span>
+				{{% } %}}
 				<li>
-					{{item}-{$index}}
+					{{items[i]}}-{{i}}
 				</li>
-			{{% /each %}}
+			{{% } %}}
 		</ul>
 		这是一段测试的代码,测试内容是{{confirm}}
 	</body>
 </html>
+

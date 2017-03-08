@@ -16,18 +16,12 @@ const getFileConten = (path)=>{
 const get = async function (){
 	const content = await getFileConten('./index.ept');
 	const result = Parse(content,{
-		data : {
 			test1 : true,
 			test2:false,
 			test3:true,
 			test4:false,
-			items : [{
-				name:1
-			},{
-				name:2
-			}],
+			items : [1,2,3,4,5,6,7,8,9],
 			confirm : 'test'
-		}
 	});
 }
 

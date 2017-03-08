@@ -32,18 +32,12 @@ var get = function () {
 					case 2:
 						content = _context.sent;
 						result = (0, _index.Parse)(content, {
-							data: {
-								test1: true,
-								test2: false,
-								test3: true,
-								test4: false,
-								items: [{
-									name: 1
-								}, {
-									name: 2
-								}],
-								confirm: 'test'
-							}
+							test1: true,
+							test2: false,
+							test3: true,
+							test4: false,
+							items: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+							confirm: 'test'
 						});
 
 					case 4:
