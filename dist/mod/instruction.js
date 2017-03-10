@@ -29,7 +29,7 @@ var compile = exports.compile = function compile(string) {
 };
 
 var formatInstruction = exports.formatInstruction = function formatInstruction(array, data) {
-	if (!array.length) return '';
+	if (!array || !array.length) return '';
 	array = array.map(function (item) {
 		var isInstruction = REG.test(item);
 		if (!isInstruction) return 'STRING += \'' + item + '\'';

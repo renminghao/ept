@@ -12,13 +12,13 @@ gulp.task('js', ()=>{
 })
 
 gulp.task('test', ['copy'], ()=>{
-	return gulp.src(['test/**/*.js'])
+	return gulp.src(['dev/**/*.js'])
 				.pipe(babel(BABEL_CONFIG))
 				.pipe(gulp.dest('build'));
 })
 
 gulp.task('copy', ()=>{
-	return gulp.src(['test/**/*.ept'])
+	return gulp.src(['dev/**/*.ept'])
 				.pipe(gulp.dest('build'));
 })
 
