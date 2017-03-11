@@ -1,6 +1,6 @@
 {
   "name": "ept",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "node模板解析引擎",
   "main": "/dist/index.js",
   "scripts": {
