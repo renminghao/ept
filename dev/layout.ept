@@ -1,0 +1,9 @@
+<!doctype>
+<html>
+	<head>
+		<title>Test Demo</title>
+	</head>
+	<body>
+		{{% block() %}}
+	</body>
+</html>

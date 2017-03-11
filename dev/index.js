@@ -22,7 +22,9 @@ const get = async function (){
 			test4:false,
 			items : [1,2,3,4,5,6,7,8,9],
 			confirm : 'test'
-	},data=>console.log(data));
+	},data=>console.log(data),{
+		context : __dirname
+	});
 }
 
 get().then().catch(e=>console.log(e));

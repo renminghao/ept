@@ -36,6 +36,7 @@ var formatInstruction = exports.formatInstruction = function formatInstruction(a
 		return compile(item);
 	});
 	array = array.join('\n');
-	array = 'try{\n' + '		var STRING = "";\n' + ' 	this.$DATA = ' + JSON.stringify(data) + '\n' + ' 	with(this.$DATA){\n' + array + '\n' + '		}\n' + '		return STRING;\n' + '	}catch(e){\n' + '		console.log(e)\n' + '	}\n';
+	array = 'try{\n' + '		var STRING = "";\n' + ' 	this.$DATA = ' + JSON.stringify(data) + '\n' + ' 	with(this.$DATA){\n' + array + '\n' + '		}\n' + '		return STRING;\n' + '	}catch(e){\n' + '		console.error(e)\n' + '	}\n';
+
 	return new Function(array)();
 };

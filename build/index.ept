@@ -1,42 +1,37 @@
-<!doctype>
-<html>
-	<head>
-		<title>Test Demo</title>
-	</head>
-	<body>
-		{{% if(test1){ %}}
-			this is test
-		{{% } %}}
+{{% extend("./layout") %}}
 
-		{{% if(test2){ %}}
-			this is test1
-		{{% }else{ %}}
-			this is test2
-		{{% } %}}
+	{{% if(test1){ %}}
+		this is test
+	{{% } %}}
 
-		{{% if(test3){ %}}
-			this is test3
-		{{% }else if(test4){ %}}
-			this is test 4
-		{{% }else{ %}}
-			this is test5
-		{{% } %}}
+	{{% if(test2){ %}}
+		this is test1
+	{{% }else{ %}}
+		this is test2
+	{{% } %}}
 
-		{{% if(test1){ %}}
-			this is test form same commonent
-		{{% } %}}
+	{{% if(test3){ %}}
+		this is test3
+	{{% }else if(test4){ %}}
+		this is test 4
+	{{% }else{ %}}
+		this is test5
+	{{% } %}}
 
-		<ul>
-			{{% for(var i = 0; i < items.length; i++){ %}}
-				{{% if(i == 1){ %}}
-					<span class="{{% if(items[i]){ %}}test{{% } %}}">test</span>
-				{{% } %}}
-				<li>
-					{{items[i]}}-{{i}}
-				</li>
+	{{% if(test1){ %}}
+		this is test form same commonent
+	{{% } %}}
+
+	<ul>
+		{{% for(var i = 0; i < items.length; i++){ %}}
+			{{% if(i == 1){ %}}
+				<span class="{{% if(items[i]){ %}}test{{% } %}}">test</span>
 			{{% } %}}
-		</ul>
-		这是一段测试的代码,测试内容是{{confirm}}
-	</body>
-</html>
+			<li>
+				{{items[i]}}-{{i}}
+			</li>
+		{{% } %}}
+	</ul>
+	这是一段测试的代码,测试内容是{{confirm}}
 
+{{% /extend %}}

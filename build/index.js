@@ -40,6 +40,8 @@ var get = function () {
 							confirm: 'test'
 						}, function (data) {
 							return console.log(data);
+						}, {
+							context: __dirname
 						});
 
 					case 4:
