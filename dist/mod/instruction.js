@@ -35,6 +35,7 @@ var formatInstruction = exports.formatInstruction = function formatInstruction(a
 		if (!isInstruction) return 'STRING += \'' + item + '\'';
 		return compile(item);
 	});
+	data = data || {};
 	array = array.join('\n');
 	array = 'try{\n' + '		var STRING = "";\n' + ' 	this.$DATA = ' + JSON.stringify(data) + '\n' + ' 	with(this.$DATA){\n' + array + '\n' + '		}\n' + '		return STRING;\n' + '	}catch(e){\n' + '		console.error(e)\n' + '	}\n';
 

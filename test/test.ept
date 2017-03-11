@@ -1,0 +1,5 @@
+this is test
+		{{% block() %}}
+{{% if(items.length){ %}}
+items是有长度的
+{{% } %}}

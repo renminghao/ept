@@ -31,7 +31,7 @@ var get = function () {
 
 					case 2:
 						content = _context.sent;
-						result = (0, _index.Parse)(content, {
+						result = (0, _index.Render)(content, {
 							test1: true,
 							test2: false,
 							test3: true,

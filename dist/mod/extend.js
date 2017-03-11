@@ -11,7 +11,6 @@ var _path = require('path');
 var extendReg = /\{\{\% *extend\ *\(['"]([\s\S]*?)['"]\)\ *\%\}\}/;
 var extendEndReg = /\{\{\%\ *\/extend\ *\%\}\}/;
 var blockReg = /\{\{\%\ * (block\(\))\ *\%\}\}/;
-var cwd = process.cwd();
 
 var extend = function extend(str, config) {
 

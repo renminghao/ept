@@ -1,0 +1,83 @@
+<!doctype>
+<html>
+	<head>
+		<title>DEMO</title>
+		<script src="../dist/browser.js"></script>
+	</head>
+	<body>
+		<div id="content"></div>
+		<code><pre>
+new EPT('&lt;ul>
+		{{% for(var i = 0; i < items.length; i++){ %}}
+			{{% if(i == 1){ %}}
+				&lt;span class="{{% if(items[i]){ %}}test{{% } %}}"&gt;test&lt;/span&gt;
+			{{% } %}}
+			&lt;li&gt;
+				{{items[i]}}-{{i}}
+			&lt;/li&gt;
+		{{% } %}}
+	&lt;/ul&gt;',{
+		items : [1,2,3,4,5,6,7,8,9]
+	},function (data){
+		document.getElementById("content").innerHTML = data;
+	}).render()			
+		</pre></code>
+		<div id="content1"></div>
+		<code>
+		<pre>
+new EPT('
+	{{% extend("./test.ept") %}}
+		&lt;ul&gt;
+			{{% for(var i = 0; i < items.length; i++){ %}}
+				{{% if(i == 1){ %}}
+					&lt;span class="{{% if(items[i]){ %}}test{{% } %}}"&gt;test&lt;/span&gt;
+				{{% } %}}
+				&lt;li&gt;
+					{{items[i]}}-{{i}}
+				&lt;/li&gt;
+			{{% } %}}
+		&lt;/ul&gt;
+	{{% /extend %}}',{
+		items : [1,2,3,4,5,6,7,8,9]
+	},function (data){
+		document.getElementById("content1").innerHTML = data;
+	}).render()			
+		</pre>
+		</code>
+		<script>
+			new EPT('<ul>\
+							{{% for(var i = 0; i < items.length; i++){ %}}\
+								{{% if(i == 1){ %}}\
+									<span class="{{% if(items[i]){ %}}test{{% } %}}">test</span>\
+								{{% } %}}\
+								<li>\
+									{{items[i]}}-{{i}}\
+								</li>\
+							{{% } %}}\
+						</ul>',{
+							items : [1,2,3,4,5,6,7,8,9]
+						},function (data){
+							document.getElementById("content").innerHTML = data;
+						}).render()			
+		</script>
+		<script>
+			new EPT('\
+				{{% extend("./test.ept") %}}\
+					<ul>\
+						{{% for(var i = 0; i < items.length; i++){ %}}\
+							{{% if(i == 1){ %}}\
+								<span class="{{% if(items[i]){ %}}test{{% } %}}">test</span>\
+							{{% } %}}\
+							<li>\
+								{{items[i]}}-{{i}}\
+							</li>\
+						{{% } %}}\
+					</ul>\
+				{{% /extend %}}',{
+					items : [1,2,3,4,5,6,7,8,9]
+				},function (data){
+					document.getElementById("content1").innerHTML = data;
+				}).render()
+		</script>
+	</body>
+</html>

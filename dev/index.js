@@ -1,8 +1,8 @@
 'use strict';
 import 'babel-polyfill';
-import {resolve as PathResolve} from 'path';
-import {readFile} from 'fs';
-import {Parse} from '../dist/index';
+import { resolve as PathResolve } from 'path';
+import { readFile } from 'fs';
+import { Render } from '../dist/index';
 
 const getFileConten = (path)=>{
 	return new Promise(resolve=>{
@@ -15,7 +15,7 @@ const getFileConten = (path)=>{
 
 const get = async function (){
 	const content = await getFileConten('./index.ept');
-	const result = Parse(content,{
+	const result = Render(content,{
 			test1 : true,
 			test2:false,
 			test3:true,
