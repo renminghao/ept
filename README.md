@@ -27,20 +27,20 @@
 浏览器版本在window对象下面暴露了一个EPT对象，改EPT对象和node模式下的EPT对象使用方法基本保持一致
 
 -	渲染字符串
-<pre>
-new EPT('\<ul\>
+```bash
+new EPT('<ul>
 		{{% for(var i = 0; i < items.length; i++){ %}}
 			{{% if(i == 1){ %}}
-				\<span class="{{% if(items[i]){ %}}test{{% } %}}"\>test\</span\>
+				<span class="{{% if(items[i]){ %}}test{{% } %}}">test</span>
 			{{% } %}}
-			\<li\>
+			<li>
 				{{items[i]}}-{{i}}
-			\</li\>
+			</li>
 		{{% } %}}
-	\</ul\>',{
+	</ul>',{
 		items : [1,2,3,4,5,6,7,8,9]
 	},callback).render()			
-		</pre>
+```
 render方法执行渲染，渲染结果是
 <pre>
 1-0
@@ -57,58 +57,58 @@ test
 
 -	集成模板渲染
 	-	web环境
-<pre>
+```bash
 new EPT('
 	{{% extend("./test.ept") %}}
-		\<ul\>
+		<ul>
 			{{% for(var i = 0; i < items.length; i++){ %}}
 				{{% if(i == 1){ %}}
-					\<span class="{{% if(items[i]){ %}}test{{% } %}}"\>test\</span\>
+					<span class="{{% if(items[i]){ %}}test{{% } %}}">test</span>
 				{{% } %}}
-				\<li\>
+				<li>
 					{{items[i]}}-{{i}}
-				\</li\>
+				</li>
 			{{% } %}}
-		\</ul\>
+		</ul>
 	{{% /extend %}}',{
 		items : [1,2,3,4,5,6,7,8,9]
 	},callback).render()	
-</pre>
+```
 	-	node环境
-<pre>
+```bash
 new EPT('
 	{{% extend("./test.ept") %}}
-		\<ul\>
+		<ul>
 			{{% for(var i = 0; i < items.length; i++){ %}}
 				{{% if(i == 1){ %}}
-					\<span class="{{% if(items[i]){ %}}test{{% } %}}"\>test\</span\>
+					<span class="{{% if(items[i]){ %}}test{{% } %}}">test</span>
 				{{% } %}}
-				\<li\>
+				<li>
 					{{items[i]}}-{{i}}
-				\</li\>
+				</li>
 			{{% } %}}
-		\</ul\>
+		</ul>
 	{{% /extend %}}',{
 		items : [1,2,3,4,5,6,7,8,9]
 	},callback,{
 		context : __dirname
 	}).render()	
-</pre>
+```
 
 两者区别在于，web环境我可以自己去查找集成的文件地址，但是node环境下需要手动增加context配置，使得能够正常的去查找被继承文件
 
 -	test.ept
-<pre>
-\<!doctype\>
-\<html\>
-	\<head\>
-		\<title\>Test Demo\</title\>
-	\</head\>
-	\<body\>
+```bash
+<!doctype>
+<html>
+	<head>
+		<title>Test Demo</title>
+	</head>
+	<body>
 		{{% block() %}}
-	\</body\>
-\</html\>
-</pre>
+	</body>
+</html>
+```
 
 ###	继承语法
 -	__block()__
