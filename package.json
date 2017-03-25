@@ -4,6 +4,7 @@
   "description": "node模板解析引擎",
   "main": "/dist/index.js",
   "scripts": {
+		"build" : "gulp",
     "dev": "gulp && node build/index.js",
     "brs" : "npm run dev && webpack --config webpack.config.js"
   },
